@@ -2,6 +2,7 @@
 #define ENTITY_HPP_INCLUDED
 
 #include <vector>
+#include <memory>
 #include "Component.hpp"
 
 class no_such_component : public std::exception {
@@ -16,12 +17,28 @@ public:
     Entity() = default;
     virtual ~Entity() = default;
 
-    void attachComponent(Component component);
-    const Component& getComponent(const Component::Type& type);
+    void attachComponent(Component* component);
+
+    /**
+     * Get a component of class T.
+     *
+     * @return The first component of type T.
+     *
+     * @throw no_such_component if the component could not be found.
+     */
+    template<class T> T* getComponent() {
+        for(auto& component : mComponents) {
+            if (typeid(T) == typeid(*component.get())) {
+                return (T*) component.get();
+            }
+        }
+        throw no_such_component();
+    }
+
     void update(int32_t deltaTime);
 
 protected:
-    std::vector<Component> mComponents;
+    std::vector<std::unique_ptr<Component>> mComponents;
 };
 
 #endif

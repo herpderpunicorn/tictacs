@@ -15,20 +15,27 @@ int main(int argc, char *argv[]) {
     }
 
     Entity entity;
-    entity.attachComponent(SpriteComponent());
+    entity.attachComponent(new SpriteComponent());
+    sf::Texture texture;
+    texture.loadFromFile("./res/noct.png");
+    sf::Sprite sprite;
+    sprite.setTexture(texture);
+    entity.getComponent<SpriteComponent>()->setSprite(sprite);
 
     sf::Clock clock;
 
-    sf::RenderWindow App(sf::VideoMode(800, 600), title);
-    while (App.isOpen()) {
+    sf::RenderWindow renderWindow(sf::VideoMode(800, 600), title);
+    while (renderWindow.isOpen()) {
+        clock.restart();
         sf::Event Event;
-        while (App.pollEvent(Event)) {
+        while (renderWindow.pollEvent(Event)) {
             if (Event.type == sf::Event::Closed)
-                App.close();
+                renderWindow.close();
         }
-        App.clear();
+        renderWindow.clear();
         entity.update(clock.getElapsedTime().asMilliseconds());
-        App.display();
+        renderWindow.draw(entity.getComponent<SpriteComponent>()->getSprite());
+        renderWindow.display();
     }
     return EXIT_SUCCESS;
 }

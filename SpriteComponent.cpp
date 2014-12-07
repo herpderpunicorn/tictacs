@@ -1,7 +1,7 @@
 #include "SpriteComponent.hpp"
 
 SpriteComponent::SpriteComponent() {
-    mType = SPRITE;
+    mType = Sprite;
 }
 
 void SpriteComponent::init(Entity* owner) {
@@ -9,4 +9,12 @@ void SpriteComponent::init(Entity* owner) {
 }
 
 void SpriteComponent::update(int32_t deltaTime) {
+}
+
+void SpriteComponent::setSprite(const sf::Sprite& sprite) {
+    mSprite = sprite;
+}
+
+const sf::Sprite& SpriteComponent::getSprite() const {
+    return mSprite;
 }
