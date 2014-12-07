@@ -1,25 +1,27 @@
 #include "config.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
-using namespace std;
 
-int main(int argc, char* argv[]) {
-
-  /* Code adapted from the SFML 2 "Window" example */
-
-  cout << "Version " << tictacs_VERSION_MAJOR << "." << tictacs_VERSION_MINOR << "." << tictacs_VERSION_REVISION << " on " << tictacs_VERSION_BRANCH << endl;
-
-  sf::RenderWindow App(sf::VideoMode(800, 600), "tictacs");
-
-  while (App.isOpen()) {
-    sf::Event Event;
-    while (App.pollEvent(Event)) {
-      if (Event.type == sf::Event::Closed)
-    App.close();
+int main(int argc, char *argv[]) {
+    std::string title("tictacs ");
+    title += std::to_string(tictacs_VERSION_MAJOR) += std::string(".") += std::to_string(tictacs_VERSION_MINOR);
+    if (tictacs_VERSION_REVISION != nullptr) {
+        title += std::string(".") += tictacs_VERSION_REVISION;
     }
-    App.clear();
-    App.display();
-  }
-  return EXIT_SUCCESS;
+    if (tictacs_VERSION_BRANCH != nullptr) {
+        title += std::string(" on ") += tictacs_VERSION_BRANCH;
+    }
+
+    sf::RenderWindow App(sf::VideoMode(800, 600), title);
+    while (App.isOpen()) {
+        sf::Event Event;
+        while (App.pollEvent(Event)) {
+            if (Event.type == sf::Event::Closed)
+                App.close();
+        }
+        App.clear();
+        App.display();
+    }
+    return EXIT_SUCCESS;
 }
 

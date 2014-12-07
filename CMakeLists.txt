@@ -10,7 +10,7 @@ endif()
 execute_process(
   COMMAND git rev-parse --abbrev-ref HEAD
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-  OUTPUT_VARIABLE GIT_BRANCH
+  OUTPUT_VARIABLE BRANCH
   OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 # Get the current HEAD short sha1
@@ -24,15 +24,15 @@ execute_process(
 # Set version information in a config.h file
 set(tictacs_VERSION_MAJOR 0)
 set(tictacs_VERSION_MINOR 1)
-if(${REVISION})
-  set(tictacs_VERSION_REVISION ${REVISION})
+if(REVISION)
+  set(tictacs_VERSION_REVISION \"${REVISION}\")
 else()
-  set(tictacs_VERSION_REVISION \"\")
+  set(tictacs_VERSION_REVISION nullptr)
 endif()
-if(${BRANCH})
-  set(tictacs_VERSION_BRANCH ${BRANCH})
+if(BRANCH)
+  set(tictacs_VERSION_BRANCH \"${BRANCH}\")
 else()
-  set(tictacs_VERSION_BRANCH \"\")
+  set(tictacs_VERSION_BRANCH nullptr)
 endif()
 configure_file(
   "${PROJECT_SOURCE_DIR}/config.h.in"
