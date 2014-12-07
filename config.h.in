@@ -1,0 +1,4 @@
+#define tictacs_VERSION_MAJOR @tictacs_VERSION_MAJOR@
+#define tictacs_VERSION_MINOR @tictacs_VERSION_MINOR@
+#define tictacs_VERSION_REVISION @tictacs_VERSION_REVISION@
+#define tictacs_VERSION_BRANCH @tictacs_VERSION_BRANCH@
