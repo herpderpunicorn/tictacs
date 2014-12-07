@@ -9,7 +9,7 @@ class Entity;
 class Component {
 public:
     enum Type : int {
-        SPRITE,
+        Sprite,
     };
     Component() = default;
     virtual ~Component() = default;
@@ -27,7 +27,11 @@ public:
     virtual void update(int32_t deltaTime) {};
 
     bool isType(const Type& type) {
-        return mType = type;
+        return mType == type;
+    };
+
+    Type getType() const {
+        return mType;
     };
 
 protected:
