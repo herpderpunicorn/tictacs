@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
 
   cout << "Version " << tictacs_VERSION_MAJOR << "." << tictacs_VERSION_MINOR << "." << tictacs_VERSION_REVISION << " on " << tictacs_VERSION_BRANCH << endl;
 
-  sf::Window App(sf::VideoMode(800, 600), "tictacs");
+  sf::RenderWindow App(sf::VideoMode(800, 600), "tictacs");
 
   while (App.isOpen()) {
     sf::Event Event;
@@ -17,7 +17,9 @@ int main(int argc, char* argv[]) {
       if (Event.type == sf::Event::Closed)
     App.close();
     }
+    App.clear();
     App.display();
   }
+  return EXIT_SUCCESS;
 }
 
