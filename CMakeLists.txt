@@ -44,7 +44,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
 
 # Define sources and executable
 set(EXECUTABLE_NAME "tictacs")
-set(SOURCE_FILES main.cpp Entity.cpp SpriteComponent.cpp ShapeComponent.cpp)
+set(SOURCE_FILES main.cpp Entity.cpp SpriteComponent.cpp ShapeComponent.cpp ShaderComponent.cpp)
 add_executable(${EXECUTABLE_NAME} ${SOURCE_FILES})
 
 # Detect and add SFML
