@@ -8,7 +8,7 @@
 class SpriteComponent : public Component {
 public:
     SpriteComponent();
-    virtual ~SpriteComponent() = default;
+    virtual ~SpriteComponent();
 
     void init(Entity* owner) override;
     void update(int32_t deltaTime) override;

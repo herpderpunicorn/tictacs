@@ -28,13 +28,18 @@ public:
      */
     template<class T> T* getComponent() {
         for(auto& component : mComponents) {
-            if (typeid(T) == typeid(*component.get())) {
+            if (typeid(T) == typeid(*component)) {
                 return (T*) component.get();
             }
         }
         throw no_such_component();
     }
 
+    /**
+     * Update the entity.
+     *
+     * @param deltaTime Time since the last update, in milliseconds.
+     */
     void update(int32_t deltaTime);
 
 protected:

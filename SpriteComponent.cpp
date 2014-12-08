@@ -1,7 +1,9 @@
 #include "SpriteComponent.hpp"
 
 SpriteComponent::SpriteComponent() {
-    mType = Sprite;
+}
+
+SpriteComponent::~SpriteComponent() {
 }
 
 void SpriteComponent::init(Entity* owner) {
