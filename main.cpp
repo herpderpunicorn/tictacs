@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "Entity.hpp"
 #include "SpriteComponent.hpp"
+#include "ShapeComponent.hpp"
 
 int main(int argc, char *argv[]) {
     std::string title("tictacs ");
@@ -22,6 +23,11 @@ int main(int argc, char *argv[]) {
     sprite.setTexture(texture);
     entity.getComponent<SpriteComponent>()->setSprite(sprite);
 
+    entity.attachComponent(new ShapeComponent());
+    sf::CircleShape* shape = new sf::CircleShape(50);
+    shape->setFillColor(sf::Color::Green);
+    entity.getComponent<ShapeComponent>()->setShape(shape);
+
     sf::Clock clock;
 
     sf::RenderWindow renderWindow(sf::VideoMode(800, 600), title);
@@ -35,6 +41,7 @@ int main(int argc, char *argv[]) {
         renderWindow.clear();
         entity.update(clock.getElapsedTime().asMilliseconds());
         renderWindow.draw(entity.getComponent<SpriteComponent>()->getSprite());
+        renderWindow.draw(entity.getComponent<ShapeComponent>()->getShape());
         renderWindow.display();
     }
     return EXIT_SUCCESS;
