@@ -40,7 +40,7 @@ configure_file(
   )
 include_directories("${PROJECT_BINARY_DIR}")
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
 # Define sources and executable
 set(EXECUTABLE_NAME "tictacs")
