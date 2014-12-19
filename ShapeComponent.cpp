@@ -1,5 +1,4 @@
 #include "ShapeComponent.hpp"
-#include "Entity.hpp"
 
 ShapeComponent::ShapeComponent() {
 
@@ -7,10 +6,6 @@ ShapeComponent::ShapeComponent() {
 
 ShapeComponent::~ShapeComponent() {
 
-}
-
-void ShapeComponent::init(Entity* owner) {
-    Component::init(owner);
 }
 
 void ShapeComponent::update(int32_t deltaTime) {

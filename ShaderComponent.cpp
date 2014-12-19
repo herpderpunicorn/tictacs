@@ -8,10 +8,6 @@ ShaderComponent::~ShaderComponent() {
 
 }
 
-void ShaderComponent::init(Entity* owner) {
-    Component::init(owner);
-}
-
 void ShaderComponent::update(int32_t deltaTime) {
     if (mOnUpdate) {
         mOnUpdate(deltaTime, mOwner, *mShader);

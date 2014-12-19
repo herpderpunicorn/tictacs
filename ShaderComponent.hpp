@@ -11,7 +11,6 @@ public:
     ShaderComponent();
     virtual ~ShaderComponent();
 
-    virtual void init(Entity* owner) override;
     virtual void update(int32_t deltaTime) override;
 
     void setShader(sf::Shader* shader);

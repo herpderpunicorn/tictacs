@@ -6,10 +6,6 @@ SpriteComponent::SpriteComponent() {
 SpriteComponent::~SpriteComponent() {
 }
 
-void SpriteComponent::init(Entity* owner) {
-    Component::init(owner);
-}
-
 void SpriteComponent::update(int32_t deltaTime) {
 }
 

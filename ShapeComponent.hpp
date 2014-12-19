@@ -11,7 +11,6 @@ public:
     ShapeComponent();
     virtual ~ShapeComponent();
 
-    virtual void init(Entity* owner) override;
     virtual void update(int32_t deltaTime) override;
 
     void setShape(sf::Shape* shape);

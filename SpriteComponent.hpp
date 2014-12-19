@@ -10,7 +10,6 @@ public:
     SpriteComponent();
     virtual ~SpriteComponent();
 
-    void init(Entity* owner) override;
     void update(int32_t deltaTime) override;
 
     void setSprite(const sf::Sprite& sprite);
