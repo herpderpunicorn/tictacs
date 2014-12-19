@@ -17,6 +17,9 @@ public:
     Entity() = default;
     virtual ~Entity() = default;
 
+    /**
+     * Attach a component to the entity.
+     */
     void attachComponent(Component* component);
 
     /**
