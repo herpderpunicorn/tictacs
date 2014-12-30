@@ -56,6 +56,11 @@ if(SFML_FOUND)
   target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
 endif()
 
+# Tests
+include(test/GTest.cmake)
+set(TEST_FILES Entity.cpp SpriteComponent.cpp ShapeComponent.cpp ShaderComponent.cpp test/Entity.cc)
+cxx_test(unitTests "${TEST_FILES}" "${CMAKE_CURRENT_SOURCE_DIR}/test/" gtest_main ${SFML_LIBRARIES})
+
 # Install target
 install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
 

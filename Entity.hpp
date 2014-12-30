@@ -15,22 +15,24 @@ public:
 class Entity {
 public:
     Entity() = default;
+
     virtual ~Entity() = default;
 
     /**
-     * Attach a component to the entity.
-     */
+    * Attach a component to the entity.
+    */
     void attachComponent(Component* component);
 
     /**
-     * Get a component of class T.
-     *
-     * @return The first component of type T.
-     *
-     * @throw no_such_component if the component could not be found.
-     */
-    template<class T> T* getComponent() {
-        for(auto& component : mComponents) {
+    * Get a component of class T.
+    *
+    * @return The first component of type T.
+    *
+    * @throw no_such_component if the component could not be found.
+    */
+    template<class T>
+    T* getComponent() {
+        for (auto& component : mComponents) {
             if (typeid(T) == typeid(*component)) {
                 return (T*) component.get();
             }
@@ -39,10 +41,10 @@ public:
     }
 
     /**
-     * Update the entity.
-     *
-     * @param deltaTime Time since the last update, in milliseconds.
-     */
+    * Update the entity.
+    *
+    * @param deltaTime Time since the last update, in milliseconds.
+    */
     void update(int32_t deltaTime);
 
 protected:
