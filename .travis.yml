@@ -1,0 +1,25 @@
+language: cpp
+compiler:
+  - gcc
+
+before_install:
+  # CMake
+  - sudo add-apt-repository --yes ppa:kalakris/cmake
+  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
+
+install:
+  # CMake
+  - sudo apt-get install -qq -y cmake
+  # g++-4.9
+  - if [ "$CXX" == "g++" ]; then sudo apt-get install -qq -y g++-4.9; fi
+  - if [ "$CXX" == "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
+
+script:
+  - $CXX --version
+  - if [ ! -d "build" ]; then mkdir "build"; fi
+  - pushd "build"
+  - cmake ..
+  - make
+  - ctest -V
+  - popd
