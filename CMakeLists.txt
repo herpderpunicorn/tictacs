@@ -54,6 +54,20 @@ find_package(SFML 2.1 REQUIRED system window graphics network)
 if(SFML_FOUND)
   include_directories(${SFML_INCLUDE_DIR})
   target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
+else()
+    include(ExternalProject)
+    # Download and install sfml
+    ExternalProject_Add(sfml_ext
+        URL "http://www.sfml-dev.org/files/SFML-2.2-sources.zip"
+        BINARY_DIR "${CMAKE_BINARY_DIR}/third-party/sfml-build"
+        SOURCE_DIR "${CMAKE_BINARY_DIR}/third-party/sfml-src"
+        INSTALL_COMMAND ""
+        CMAKE_ARGS "${SFML_CMAKE_ARGS}"
+            "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}")
+    set(SFML_INCLUDE_DIRS "${CMAKE_BINARY_DIR}/third-party/sfml/include")
+    link_directories("${CMAKE_BINARY_DIR}/third-party/sfml/lib")
+    include_directories(${SFML_INCLUDE_DIR})
+    target_link_libraries(${EXECUTABLE_NAME} sfml-system sfml-window sfml-graphics sfml-network)
 endif()
 
 # Tests

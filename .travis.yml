@@ -11,6 +11,15 @@ before_install:
 install:
   # CMake
   - sudo apt-get install -qq -y cmake
+  # sfml dependencies
+  - sudo apt-get install -qq -y freeglut3-dev
+  - sudo apt-get install -qq -y libjpeg-dev
+  - sudo apt-get install -qq -y libfreetype6-dev
+  - sudo apt-get install -qq -y libxrandr-dev
+  - sudo apt-get install -qq -y libglew-dev
+  - sudo apt-get install -qq -y libsndfile1-dev
+  - sudo apt-get install -qq -y libopenal-dev
+  - sudo apt-get install -qq -y libudev-dev
   # g++-4.9
   - if [ "$CXX" == "g++" ]; then sudo apt-get install -qq -y g++-4.9; fi
   - if [ "$CXX" == "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
